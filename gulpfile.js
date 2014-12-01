@@ -81,14 +81,13 @@ gulp.task('clean', function () {
 
 //gulp-webserver
 gulp.task('webserver', function() {
-  gulp.src('src')
+  gulp.src('build')
     .pipe(webserver({
       livereload: true,
       directoryListing: false,
       open: true
     }));
 });
-
 
 
 //watcher of files
