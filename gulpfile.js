@@ -12,6 +12,7 @@ var concat = require('gulp-concat');
 var filter = require('gulp-filter');
 var mainBowerFiles = require('main-bower-files');
 var webserver = require('gulp-webserver');
+var clean = require('gulp-clean');
 
 var filterByExtension = function(extension){
     return filter(function(file){
@@ -72,6 +73,11 @@ gulp.task('build', ['sass', 'vendor'], function(){
 gulp.task('bin', ['sass'], function(){
 
 });
+//task to clean build folder
+gulp.task('clean', function () {
+  return gulp.src('build', {read: false})
+    .pipe(clean());
+});
 
 //gulp-webserver
 gulp.task('webserver', function() {
@@ -82,6 +88,8 @@ gulp.task('webserver', function() {
       open: true
     }));
 });
+
+
 
 //watcher of files
 gulp.task('watch', ['build', 'bin'], function(){
