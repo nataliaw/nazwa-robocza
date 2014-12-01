@@ -11,6 +11,7 @@ var inject = require('gulp-inject');
 var concat = require('gulp-concat');
 var filter = require('gulp-filter');
 var mainBowerFiles = require('main-bower-files');
+var webserver = require('gulp-webserver');
 
 var filterByExtension = function(extension){
     return filter(function(file){
@@ -70,6 +71,16 @@ gulp.task('build', ['sass', 'vendor'], function(){
 //task to move files to our bin folder
 gulp.task('bin', ['sass'], function(){
 
+});
+
+//gulp-webserver
+gulp.task('webserver', function() {
+  gulp.src('src')
+    .pipe(webserver({
+      livereload: true,
+      directoryListing: false,
+      open: true
+    }));
 });
 
 //watcher of files
