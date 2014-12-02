@@ -58,10 +58,11 @@ gulp.task('build', ['sass', 'vendor'], function(){
 
     //inject proper css files and move index.html TODO js files
     var sources = gulp.src([
-            config.build_dir + '/assets/js/vendor/*.js',
-            config.build_dir + '/assets/js/*.js',
-            config.build_dir + '/assets/css/vendor/*.css',
-            config.build_dir + '/assets/css/*.css'
+           '/assets/js/vendor/angular.js',
+           '/assets/js/vendor/*.js',
+           '/assets/js/*.js',
+           '/assets/css/vendor/*.css',
+           '/assets/css/*.css'
         ], {read: false});
 
     return gulp.src('./src/index.html')

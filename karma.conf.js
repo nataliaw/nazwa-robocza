@@ -15,6 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'vendor/angular/*.js',
+      'vendor/**/*.js',
       'src/app/*.js',
       'test/specs/*.js'
     ],
@@ -22,6 +24,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+      'vendor/firebase/firebase-debug.js',
     ],
 
 
