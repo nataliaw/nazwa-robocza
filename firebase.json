@@ -1,0 +1,9 @@
+{
+  "firebase": "nazwa-robocza",
+  "public": "build", //TODO: change to bin
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
