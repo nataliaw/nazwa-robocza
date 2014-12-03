@@ -11,6 +11,8 @@ var inject = require('gulp-inject');
 var concat = require('gulp-concat');
 var filter = require('gulp-filter');
 var mainBowerFiles = require('main-bower-files');
+var webserver = require('gulp-webserver');
+var clean = require('gulp-clean');
 
 var filterByExtension = function(extension){
     return filter(function(file){
@@ -56,10 +58,11 @@ gulp.task('build', ['sass', 'vendor'], function(){
 
     //inject proper css files and move index.html TODO js files
     var sources = gulp.src([
-            config.build_dir + '/assets/js/vendor/*.js',
-            config.build_dir + '/assets/js/*.js',
-            config.build_dir + '/assets/css/vendor/*.css',
-            config.build_dir + '/assets/css/*.css'
+           '/assets/js/vendor/angular.js',
+           '/assets/js/vendor/*.js',
+           '/assets/js/*.js',
+           '/assets/css/vendor/*.css',
+           '/assets/css/*.css'
         ], {read: false});
 
     return gulp.src('./src/index.html')
@@ -71,6 +74,22 @@ gulp.task('build', ['sass', 'vendor'], function(){
 gulp.task('bin', ['sass'], function(){
 
 });
+//task to clean build folder
+gulp.task('clean', function () {
+  return gulp.src('build', {read: false})
+    .pipe(clean());
+});
+
+//gulp-webserver
+gulp.task('webserver', function() {
+  gulp.src('build')
+    .pipe(webserver({
+      livereload: true,
+      directoryListing: false,
+      open: true
+    }));
+});
+
 
 //watcher of files
 gulp.task('watch', ['build', 'bin'], function(){
